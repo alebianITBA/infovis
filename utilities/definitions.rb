@@ -19,6 +19,8 @@ file.each_line do |line|
   end
 end
 
-numerous = ans.to_a.select { |array| array[1] > 5 && array[0].size > 3 }
+exclude_words = %w(with this that is a an on in at since for to by)
+
+numerous = ans.to_a.select { |array| array[1] > 4 && array[0].size > 3 && !exclude_words.include?(array[0]) }
 
 File.open('./result.json', 'w+').write(JSON.generate(numerous.sort { |a, b| a[1] <=> b[1] }))

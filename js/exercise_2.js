@@ -4,32 +4,40 @@ var agreeColor = "#8cdf59";
 var neutralColor = "#7697b0";
 var disagreeColor = "#db4437";
 
+var bar_width = 1000;
+var bar_height = 25;
+
+function bar_proportion(number) {
+  return (number * 1000) / 100;
+}
+
+$("div#reference").append("<h3>Reference: " + "<strong style='color:" + agreeColor +"'>Agree</strong>, " + "<strong style='color:" + neutralColor +"'>Neutral</strong>, " + "<strong style='color:" + disagreeColor +"'>Disagree</strong>" + "</h3>");
+
 for (element of data) {
+  $("div#svg-d3").append("<p class='data-title'>" + element.text + "</p>");
 
   var svgContainer = d3.select("div#svg-d3").append("svg")
-                                            .attr("width", 100)
-                                            .attr("height", 50);
+                                            .attr("width", bar_width)
+                                            .attr("height", bar_height);
 
   var agreeRectangle = svgContainer.append("rect")
                                    .attr("x", 0)
-                                   .attr("width", element.agree)
-                                   .attr("height", 50);
+                                   .attr("width", bar_proportion(element.agree))
+                                   .attr("height", bar_height);
   var agreeRectangleAttributes = agreeRectangle
                                    .style("fill", function(d) { return agreeColor; });
 
   var neutralRectangle = svgContainer.append("rect")
-                                     .attr("x", element.agree)
-                                     .attr("width", element.neutral)
-                                     .attr("height", 50);
+                                     .attr("x", bar_proportion(element.agree))
+                                     .attr("width", bar_proportion(element.neutral))
+                                     .attr("height", bar_height);
   var neutralRectangleAttributes = neutralRectangle
                                      .style("fill", function(d) { return neutralColor; });
 
   var disagreeRectangle = svgContainer.append("rect")
-                                      .attr("x", element.agree + element.neutral)
-                                      .attr("width", element.disagree)
-                                      .attr("height", 50);
+                                      .attr("x", bar_proportion(element.agree + element.neutral))
+                                      .attr("width", bar_proportion(element.disagree))
+                                      .attr("height", bar_height);
   var disagreeRectangleAttributes = disagreeRectangle
                                       .style("fill", function(d) { return disagreeColor; });
-
-  d3.select("div#svg-d3").append("br")
 }
