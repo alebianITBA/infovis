@@ -9,13 +9,31 @@
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 </head>
 <body>
-  <h1>Word cloud</h1>
-  <h3>Random colors and words distribution</h3>
-  <div id="word-soup"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1 class="title">Word cloud</h1>
+        <h3>Random colors and words distribution (everytime the page loads)</h3>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div id="word-soup"></div>
+          </div>
+        </div>
+        <a href="../index.html">
+          <button type="button" class="btn btn-primary back" aria-label="Left Align">
+            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+            Back
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
   <script src="../js/exercise_1.js"></script>
-  <a href="../index.html">Back</a>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@ var agreeColor = "#8cdf59";
 var neutralColor = "#7697b0";
 var disagreeColor = "#db4437";
 
-var bar_width = 1000;
+var bar_width = 800;
 var bar_height = 25;
 
 function bar_proportion(number) {
