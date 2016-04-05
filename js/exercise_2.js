@@ -8,7 +8,7 @@ var bar_width = 800;
 var bar_height = 25;
 
 function bar_proportion(number) {
-  return (number * 1000) / 100;
+  return (number * bar_width) / 100;
 }
 
 $("div#reference").append("<h3>Reference: " + "<strong style='color:" + agreeColor +"'>Agree</strong>, " + "<strong style='color:" + neutralColor +"'>Neutral</strong>, " + "<strong style='color:" + disagreeColor +"'>Disagree</strong>" + "</h3>");
