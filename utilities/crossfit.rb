@@ -1,12 +1,14 @@
 require 'nokogiri'
 require 'open-uri'
 require 'json'
+require 'byebug'
 
 base_url = 'http://games.crossfit.com/athlete/'
 
 athletes = []
 
-(1..15000).each do |number|
+(86..15000).each do |number|
+  puts number
   doc = Nokogiri::HTML(open(base_url + number.to_s))
   name = doc.css('#page-title').children.text.split(': ')[1]
   next if name == 'Not found'
@@ -18,13 +20,18 @@ athletes = []
   # Get all the profile details
   profile_details = doc.css('.profile-details dl dd')
   athlete['Region'] = profile_details.children[0].children.text
-  if profile_details.children.size == 6
+  if profile_details.children.size == 5
+    athlete['Gender'] = profile_details.children[1].text
+    athlete['Age'] = profile_details.children[2].text.to_i
+    athlete['Height'] = profile_details.children[3].text
+    athlete['Weight'] = { 'value' => profile_details.children[4].text.split(' ')[0].to_f, 'unit' => 'lb' }
+  elsif profile_details.children.size == 6
     athlete['Affiliate'] = profile_details.children[1].children.text
     athlete['Gender'] = profile_details.children[2].text
     athlete['Age'] = profile_details.children[3].text.to_i
     athlete['Height'] = profile_details.children[4].text
     athlete['Weight'] = { 'value' => profile_details.children[5].text.split(' ')[0].to_f, 'unit' => 'lb' }
-  else
+  elsif profile_details.children.size == 7
     athlete['Team'] = profile_details.children[1].children.text
     athlete['Affiliate'] = profile_details.children[2].children.text
     athlete['Gender'] = profile_details.children[3].text
@@ -53,24 +60,25 @@ athletes = []
   leaderboard_url = 'http:' + doc.css('#cf_leaderboard')[0].attributes['src'].value
   leaderboard = Nokogiri::HTML(open(leaderboard_url))
   athlete['Open Results'] = {}
+  next if leaderboard.css('.highlight .number').empty?
   athlete['Open Results']['Position'] = leaderboard.css('.highlight .number').children.first.text.split(' ').first.to_i
   athlete['Open Results']['Workouts'] = { '01' => {}, '02' => {}, '03' => {}, '04' => {}, '05' => {} }
 
   position = leaderboard.css('.highlight .score-cell')[0].children[1].children[0].text.split(' ')
   athlete['Open Results']['Workouts']['01']['Position'] = position[0].to_i
-  athlete['Open Results']['Workouts']['01']['Repetitions'] = position[1].gsub('(', '').gsub(')', '').to_i
+  athlete['Open Results']['Workouts']['01']['Repetitions'] = position[1].gsub('(', '').gsub(')', '').to_i if position[1]
   position = leaderboard.css('.highlight .score-cell')[1].children[1].children[0].text.split(' ')
   athlete['Open Results']['Workouts']['02']['Position'] = position[0].to_i
-  athlete['Open Results']['Workouts']['02']['Repetitions'] = position[1].gsub('(', '').gsub(')', '').to_i
+  athlete['Open Results']['Workouts']['02']['Repetitions'] = position[1].gsub('(', '').gsub(')', '').to_i if position[1]
   position = leaderboard.css('.highlight .score-cell')[2].children[1].children[0].text.split(' ')
   athlete['Open Results']['Workouts']['03']['Position'] = position[0].to_i
-  athlete['Open Results']['Workouts']['03']['Repetitions'] = position[1].gsub('(', '').gsub(')', '').to_i
+  athlete['Open Results']['Workouts']['03']['Repetitions'] = position[1].gsub('(', '').gsub(')', '').to_i if position[1]
   position = leaderboard.css('.highlight .score-cell')[3].children[1].children[0].text.split(' ')
   athlete['Open Results']['Workouts']['04']['Position'] = position[0].to_i
-  athlete['Open Results']['Workouts']['04']['Repetitions'] = position[1].gsub('(', '').gsub(')', '').to_i
+  athlete['Open Results']['Workouts']['04']['Repetitions'] = position[1].gsub('(', '').gsub(')', '').to_i if position[1]
   position = leaderboard.css('.highlight .score-cell')[4].children[1].children[0].text.split(' ')
   athlete['Open Results']['Workouts']['05']['Position'] = position[0].to_i
-  athlete['Open Results']['Workouts']['05']['Time'] = position[1].gsub('(', '').gsub(')', '')
+  athlete['Open Results']['Workouts']['05']['Time'] = position[1].gsub('(', '').gsub(')', '') if position[1]
 
   athletes << athlete
 end
