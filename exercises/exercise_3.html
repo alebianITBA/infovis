@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Data visualization - Exercise 3</title>
+  <link rel="stylesheet" type="text/css" href="../css/general.css">
+  <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1 class="title">Argentine 2010 census</h1>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div id="quantityPieChart" class="center"></div>
+            <div id="agesPieChart" class="center"></div>
+            <div id="readPieChart" class="center"></div>
+            <div id="universityPieChart" class="center"></div>
+            <div id="computerChart" class="center"><svg width="600" height="600" xmlns="http://www.w3.org/2000/svg"><g transform="translate(10,10)"><g><circle class="node node--root" transform="translate(290,290)" r="290" style="fill-opacity: 0; stroke: rgb(221, 221, 221); stroke-opacity: 1;"></circle><circle class="node node--leaf" transform="translate(203.5553199315661,396.49664712659273)" r="51.630198832088" style="fill: rgb(223, 219, 219); fill-opacity: 1; stroke: rgb(221, 221, 221); stroke-opacity: 0;"></circle><circle class="node node--leaf" transform="translate(398.2727103865855,396.49664712659273)" r="138.1299382246012" style="fill: rgb(128, 128, 128); fill-opacity: 1; stroke: rgb(221, 221, 221); stroke-opacity: 0;"></circle><circle class="node node--leaf" transform="translate(191.0568144169585,192.83287767695128)" r="147.45946302814522" style="fill: rgb(41, 81, 189); fill-opacity: 1; stroke: rgb(221, 221, 221); stroke-opacity: 0;"></circle></g><g><text text-anchor="middle" transform="translate(290,290)" style="font-size: 11px; font-family: Verdana;"></text><text text-anchor="middle" transform="translate(203.5553199315661,396.49664712659273)" style="font-size: 11px; font-family: Verdana;">Did not respond %2.14</text><text text-anchor="middle" transform="translate(398.2727103865855,396.49664712659273)" style="font-size: 11px; font-family: Verdana;">Does not use computer %47.87</text><text text-anchor="middle" transform="translate(191.0568144169585,192.83287767695128)" style="font-size: 11px; font-family: Verdana;">Uses computer %49.99</text></g></g></svg></div>
+            <div id="living-places">Loading chart...</div>
+          </div>
+          <div class="panel-footer">
+            <a href="http://datar.noip.me/dataset/censo-2010-microdatos">Data taken from here</a>
+          </div>
+        </div>
+        <a href="../index.html">
+          <button type="button" class="btn btn-primary back" aria-label="Left Align">
+            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+            Back
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+  <script src="../js/d3pie.min.js"></script>
+  <script src="../js/jscharts.js"></script>
+  <script src="../js/exercise_3.js"></script>
+</body>
+</html>

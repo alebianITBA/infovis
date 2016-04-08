@@ -31,3 +31,14 @@ a {
   font-size: 20px;
   text-decoration: none;
 }
+
+.data-title {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.center {
+  display: table;
+  margin: 0 auto 0 auto;
+}
