@@ -7,7 +7,7 @@ base_url = 'http://games.crossfit.com/athlete/'
 
 athletes = []
 
-(86..15000).each do |number|
+(2001..3000).each do |number|
   puts number
   doc = Nokogiri::HTML(open(base_url + number.to_s))
   name = doc.css('#page-title').children.text.split(': ')[1]
