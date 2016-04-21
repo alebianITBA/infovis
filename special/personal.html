@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width">
   <title>Data visualization - Personal</title>
   <link rel="stylesheet" type="text/css" href="../css/general.css">
+  <link rel="stylesheet" type="text/css" href="../css/personal.css">
   <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
@@ -19,6 +20,10 @@
         </div>
         <div class="panel panel-default">
           <div class="panel-body">
+            <div><p>This visualization shows my current Facebook friends and the amount of mutual friends we have. Each color represents a group of people and where I met them. The size of each circle depends on the amount of mutual friends.</p></div>
+            <div id="tooltip" class="hidden">
+              <p><span id="label"></span></p>
+            </div>
             <svg width="800" height="800" xmlns="http://www.w3.org/2000/svg">
               <circle class="iv-activities" cx="260.2535604316447" cy="284.1367019945065" r="3.3753121998159075"></circle>
               <circle class="iv-activities" cx="287.33209781933965" cy="279.24598318558907" r="3.213201484406542"></circle>
@@ -431,6 +436,7 @@
               <ellipse id="travel-ellipse" cx="558.57141" cy="710.21936" rx="40" ry="40.714287" style="fill:#000000;fill-rule:evenodd;stroke;opacity:0"></ellipse>
               <ellipse id="sport-ellipse" cx="457.14285" cy="589.5051" rx="70" ry="101.42857" style="fill:#000000;fill-rule:evenodd;stroke;opacity:0"></ellipse>
               <ellipse id="activities-ellipse" cx="290" cy="245.93364" rx="25.714285" ry="53.57143" style="fill:#000000;fill-rule:evenodd;stroke;opacity:0"></ellipse></svg>
+            <div><h1>Conclusion: </h1><p> We can see how in my work and school groups, the circles have a similar size, this is because in both cases people (myself too) bonded more with the rest and made more friends. Same thing happened (but with less people) with my sport friends, you can see 2 groups which represents the 2 different sports I practiced and made a group of friends. Travel, College and Other groups show a variety of sizes, this is because in those cases I made different groups of friendships and a lot of people don't know the rest. My family group is very small because a lot of them don't even use Facebook!</p></div>
           </div>
         </div>
         <a href="../index.html">
