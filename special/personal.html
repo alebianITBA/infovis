@@ -19,8 +19,10 @@
           <h1 class="title">Facebook friends</h1>
         </div>
         <div class="panel panel-default">
+          <div class="panel-heading">
+            <p class="information">This visualization shows my current Facebook friends and the amount of mutual friends we have. Each color represents a group of people and where I met them. The size of each circle depends on the amount of mutual friends.</p>
+          </div>
           <div class="panel-body">
-            <div><p>This visualization shows my current Facebook friends and the amount of mutual friends we have. Each color represents a group of people and where I met them. The size of each circle depends on the amount of mutual friends.</p></div>
             <div id="tooltip" class="hidden">
               <p><span id="label"></span></p>
             </div>
@@ -436,7 +438,19 @@
               <ellipse id="travel-ellipse" cx="558.57141" cy="710.21936" rx="40" ry="40.714287" style="fill:#000000;fill-rule:evenodd;stroke;opacity:0"></ellipse>
               <ellipse id="sport-ellipse" cx="457.14285" cy="589.5051" rx="70" ry="101.42857" style="fill:#000000;fill-rule:evenodd;stroke;opacity:0"></ellipse>
               <ellipse id="activities-ellipse" cx="290" cy="245.93364" rx="25.714285" ry="53.57143" style="fill:#000000;fill-rule:evenodd;stroke;opacity:0"></ellipse></svg>
-            <div><h1>Conclusion: </h1><p> We can see how in my work and school groups, the circles have a similar size, this is because in both cases people (myself too) bonded more with the rest and made more friends. Same thing happened (but with less people) with my sport friends, you can see 2 groups which represents the 2 different sports I practiced and made a group of friends. Travel, College and Other groups show a variety of sizes, this is because in those cases I made different groups of friendships and a lot of people don't know the rest. My family group is very small because a lot of them don't even use Facebook!</p></div>
+            <div><h1>Conclusion: </h1><p class="information"> We can see how in my work and school groups, the circles have a similar size, this is because in both cases people (myself too) bonded more with the rest and made more friends. Same thing happened (but with less people) with my sport friends, you can see 2 groups which represents the 2 different sports I practiced and made a group of friends. Travel, College and Other groups show a variety of sizes, this is because in those cases I made different groups of friendships and a lot of people don't know the rest. My family group is very small because a lot of them don't even use Facebook!</p></div>
+          </div>
+          <div class="panel-footer">
+            <h3>Development notes<h3>
+              <ul>
+                <li><p  class="information">The data was taken manually from my friends list, because the Facebook API didn't return my whole friend list.</p></li>
+                <li><p  class="information">After collecting the data, I added (manually) the information about where I met every person.</p></li>
+                <li><p  class="information">Using Ruby I created some scripts (located in /utilities) that converted the information into something more appropriate for D3 to read and also removing people names.</p></li>
+                <li><p  class="information">After transforming the data and saving it in a CSV file, I used <a href="http://app.raw.densitydesign.org/">RAW</a> to create all the circles in the visualization.</p></li>
+                <li><p  class="information">I used JQuery to resize each circle since RAW draw some of them too small, Using the same scale for every one.</p></li>
+                <li><p  class="information">After all of that, I added some elipses in front of the dot groups so that they could interact with the mouse instead of every single dot.</p></li>
+                <li><p  class="information">Finally with the big ellipses I used straight D3 to make the opacity transitions of each group and showing the tooltip.</p></li>
+              </ul>
           </div>
         </div>
         <a href="../index.html">
